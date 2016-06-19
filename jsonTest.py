@@ -18,9 +18,6 @@ with open('keyword.json') as data_file:
         size = 'size',ele   
         sizeList.append(size)
 
-    a = nameList[5][1]
-    print a
-
     for x in range(0, len(nameList)):
         aaa = nameList[x][1].decode('utf8')
         ele = {nameList[x][0]:aaa, sizeList[x][0]:sizeList[x][1]}
