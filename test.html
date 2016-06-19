@@ -53,7 +53,7 @@ function classes(root) {
   var classes = [];
 
   function recurse(name, node) {
-    var range = Math.round(node.size / 500)
+    var range = Math.round(node.size / 100)
     if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
     else classes.push({packageName: name, className: node.name, value: node.size, range: range});
   }
