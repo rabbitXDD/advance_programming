@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+    <html>
+      <head>
+        {% block head %}
+        <meta charset="UTF-8">
+        <!-- jQuery -->
+        <script src="{{ url_for('static', filename='js/jquery-1.12.3.min.js') }}"></script>
+        <!-- Bootstrap css & js-->
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" name="css">
+        <link href="{{ url_for('static', filename='css/bootstrap-select.min.css') }}" rel="stylesheet" name="css">
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap-select.min.js') }}"></script>
+        <!-- custom css -->
+        <link href="ptt.css" rel="stylesheet" name="css">
+        <!-- custom js -->
+        <script src="{{ url_for('static', filename='js/ptt.js') }}"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+        
+        <title>
+          {% block title %}{% endblock %} - ptt search System
+        </title>
+        {% endblock %}
+      </head>
+
+        <body>
+          
+          {% block body %}
+          <nav class="navbar navbar-inverse" >
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/">ptt Search System</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li><a href="/students">aaa</a></li>
+            </ul>
+          </div>
+          </nav>
+
+          <div id="content">{% block content %}{% endblock %}</div>
+          <div id="d3_result">{% block d3_result %}{% endblock %}</div>
+
+          <div id="footer" class="footer navbar-fixed-bottom">
+            {% block footer %}
+            &copy; Copyright 2016 by <a href="http://ghost.cs.nccu.edu.tw/~f102306016/index-js.html">David</a>.
+            {% endblock %}
+          </div>
+          {% endblock %}
+        </body>
+
+    </html>

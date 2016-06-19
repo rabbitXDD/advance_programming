@@ -1,0 +1,35 @@
+{% extends "Base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+  </style>
+  
+  
+{% endblock %}
+
+{% block content %}
+  <h3>Welcome to PTT search System.</h3>
+  
+  <form>
+      <select id='menu' name='function' class="selectpicker" data-live-search="true" data-width="35%">
+        <option data-tokens="八卦版 Gossiping" value="Gossiping">八卦板</option>
+        <option data-tokens="西斯板 Sex" value="Sex">西斯板</option>
+        <option data-tokens="媽佛板 Marvel" value="Marvel">媽佛板</option>
+        <option data-tokens="棒球版 Baseball" value="Baseball">棒球板</option>
+        <option data-tokens="籃球版 NBA" value="NBA">籃球板</option>
+        <option data-tokens="女人聊天板 WomenTalk" value="WomenTalk">女人聊天板</option>
+        <option data-tokens="男人聊天板 MenTalk" value="MenTalk">男人聊天板</option>
+        <option data-tokens="表特板 Beauty" value="Beauty">表特板</option>
+        <option data-tokens="笨板 StupidClown" value="StupidClown">笨板</option>
+      </select>
+  </form>
+
+{% endblock %}
+{% block d3_result %}
+<script type="text/javascript">
+      
+
+    </script>
+<div></div>
+{% endblock %}
