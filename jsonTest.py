@@ -1,5 +1,6 @@
 import json
 import itertools
+import random
 from pprint import pprint
 
 # -*- coding: utf8 -*-
@@ -15,7 +16,7 @@ with open('keyword.json') as data_file:
         nameList.append(name)
 
     for ele in data.values():
-        size = 'size',ele*150
+        size = 'size',ele*150 - random.randint(15,150)
   
         sizeList.append(size)
 
