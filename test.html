@@ -40,7 +40,7 @@ d3.json("aaa.json", function(error, root) {
 
   node.append("circle")
       .attr("r", function(d) { return d.r; })
-      .style("fill", function(d) { return color(d.className); });
+      .style("fill", function(d) { return color(d.value); });
 
   node.append("text")
       .attr("dy", ".3em")
