@@ -30,8 +30,11 @@ with open('keyword.json') as data_file:
     jsonData = json.dumps(jsonList)
    # print jsonData
     with open('aaa.json', 'w') as f:
+        f.write('{')
+        f.write(repr("'name'")+':'+repr("'flare'")+','+repr("'children'")+':')
         for ele in jsonData:
             f.write(ele)
+        f.write('}')
 
 
 
