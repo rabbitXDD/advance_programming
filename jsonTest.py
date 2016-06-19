@@ -15,7 +15,8 @@ with open('keyword.json') as data_file:
         nameList.append(name)
 
     for ele in data.values():
-        size = 'size',ele   
+        size = 'size',ele*150
+  
         sizeList.append(size)
 
     a = nameList[5][1]
