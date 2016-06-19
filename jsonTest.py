@@ -24,7 +24,7 @@ with open('keyword.json') as data_file:
     for x in range(0, len(nameList)):
         aaa = nameList[x][1].decode('utf8')
         ele = {nameList[x][0]:aaa, sizeList[x][0]:sizeList[x][1]}
-        if ele.get('size') > 100:
+        if ele.get('size') > 100 and len(aaa) > 1:
             jsonList.append(ele)
 
     #print jsonList
