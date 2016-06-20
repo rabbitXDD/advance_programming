@@ -8,6 +8,7 @@ text {
 
 </style>
 <body>
+  <svg width="960" height="960" class='bubble'></svg>
     <button id='gossiping'>八卦</button>
     <button id='sex'>西斯</button>
 <script src="//d3js.org/d3.v3.min.js"></script>
@@ -26,7 +27,7 @@ document.getElementById("gossiping").addEventListener("click", function(){
         .size([diameter, diameter])
         .padding(1.5);
 
-    var svg = d3.select("body").append("svg")
+    var svg = d3.select("body").select("svg")
         .attr("width", diameter)
         .attr("height", diameter)
         .attr("class", "bubble");
