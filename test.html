@@ -8,7 +8,7 @@ text {
 
 </style>
 <body>
-  <svg width="960" height="960" class='bubble'></svg>
+  <svg width="960" height="960" class='bubble' id='svg'></svg>
     <button id='gossiping'>八卦</button>
     <button id='sex'>西斯</button>
 <script src="//d3js.org/d3.v3.min.js"></script>
@@ -18,7 +18,7 @@ text {
 document.getElementById("gossiping").addEventListener("click", function(){
 
     $( document ).ready(function() {
-        alert( "ready!" );
+        $("#svg").empty();
     });
     var diameter = 960,
     format = d3.format(",d"),
