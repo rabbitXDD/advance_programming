@@ -12,7 +12,7 @@ text {
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
 
-document.getElementById("hate").addEventListener("click", function(){
+
 
     var diameter = 960,
     format = d3.format(",d"),
@@ -27,7 +27,7 @@ document.getElementById("hate").addEventListener("click", function(){
         .attr("width", diameter)
         .attr("height", diameter)
         .attr("class", "bubble");
-        
+
     d3.json("aaa.json", function(error, root) {
         if (error) throw error;
 
@@ -64,7 +64,7 @@ document.getElementById("hate").addEventListener("click", function(){
       return {children: classes};
     }
     d3.select(self.frameElement).style("height", diameter + "px");
-});
+
 
 </script>
 
