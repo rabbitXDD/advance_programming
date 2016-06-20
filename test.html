@@ -54,6 +54,20 @@ document.getElementById("sex").addEventListener("click", function(){
               .text(function(d) { return d.className.substring(0, d.r / 3) + d.value; });
     });
 
+    // Returns a flattened hierarchy containing all leaf nodes under the root.
+    function classes(root) {
+      var classes = [];
+
+      function recurse(name, node) {
+        var range = Math.round(node.size / 100)
+        if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+        else classes.push({packageName: name, className: node.name, value: node.size, range: range});
+      }
+
+      recurse(null, root);
+      return {children: classes};
+    }
+
     d3.select(self.frameElement).style("height", diameter + "px");
 });
 
@@ -61,19 +75,7 @@ document.getElementById("sex").addEventListener("click", function(){
 
 
 
-// Returns a flattened hierarchy containing all leaf nodes under the root.
-function classes(root) {
-  var classes = [];
 
-  function recurse(name, node) {
-    var range = Math.round(node.size / 100)
-    if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
-    else classes.push({packageName: name, className: node.name, value: node.size, range: range});
-  }
-
-  recurse(null, root);
-  return {children: classes};
-}
 
 
 
