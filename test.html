@@ -14,9 +14,7 @@ text {
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
 var jsonFile = false;
-document.getElementById("sex").addEventListener("click", function(){
-
-    var diameter = 960,
+var diameter = 960,
     format = d3.format(",d"),
     color = d3.scale.category20();
 
@@ -29,7 +27,7 @@ var svg = d3.select("body").append("svg")
     .attr("width", diameter)
     .attr("height", diameter)
     .attr("class", "bubble");
-
+document.getElementById("sex").addEventListener("click", function(){
 
     d3.json("aaa.json", function(error, root) {
         if (error) throw error;
