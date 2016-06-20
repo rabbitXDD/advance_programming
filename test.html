@@ -8,12 +8,12 @@ text {
 
 </style>
 <body>
-
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
+
 var diameter = 960,
-format = d3.format(",d"),
-color = d3.scale.category20();
+    format = d3.format(",d"),
+    color = d3.scale.category20();
 
 var bubble = d3.layout.pack()
     .sort(null)
@@ -26,12 +26,12 @@ var svg = d3.select("body").append("svg")
     .attr("class", "bubble");
 
 d3.json("aaa.json", function(error, root) {
-    if (error) throw error;
+  if (error) throw error;
 
-    var node = svg.selectAll(".node")
+  var node = svg.selectAll(".node")
       .data(bubble.nodes(classes(root))
       .filter(function(d) { return !d.children; }))
-      .enter().append("g")
+    .enter().append("g")
       .attr("class", "node")
       .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
@@ -64,8 +64,4 @@ function classes(root) {
 
 d3.select(self.frameElement).style("height", diameter + "px");
 
-
 </script>
-
-    
-</body>
