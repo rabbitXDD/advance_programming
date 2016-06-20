@@ -10,6 +10,10 @@ text {
 <body>
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
+var jsonFile = ''
+document.getElementById("sex").addEventListener("click", function(){
+    jsonFile = "aaa.json"
+});
 
 var diameter = 960,
     format = d3.format(",d"),
@@ -25,7 +29,7 @@ var svg = d3.select("body").append("svg")
     .attr("height", diameter)
     .attr("class", "bubble");
 
-d3.json("aaa.json", function(error, root) {
+d3.json(jsonFile, function(error, root) {
   if (error) throw error;
 
   var node = svg.selectAll(".node")
@@ -45,7 +49,7 @@ d3.json("aaa.json", function(error, root) {
   node.append("text")
       .attr("dy", ".3em")
       .style("text-anchor", "middle")
-      .text(function(d) { return d.className.substring(0, d.r / 3) +'\r\n'+ d.value; });
+      .text(function(d) { return d.className.substring(0, d.r / 3) +\r\n+ d.value; });
 });
 
 // Returns a flattened hierarchy containing all leaf nodes under the root.
@@ -65,3 +69,7 @@ function classes(root) {
 d3.select(self.frameElement).style("height", diameter + "px");
 
 </script>
+<body>
+    <button id='hate'>黑特</button>
+    <button id='sex'>西斯</button>
+</body>
