@@ -16,12 +16,7 @@ text {
 var jsonFile = false;
 document.getElementById("sex").addEventListener("click", function(){
 
-    jsonFile = true;
-    alert(jsonFile)
-    alert('aaa')
-});
-
-var diameter = 960,
+    var diameter = 960,
     format = d3.format(",d"),
     color = d3.scale.category20();
 
@@ -35,7 +30,7 @@ var svg = d3.select("body").append("svg")
     .attr("height", diameter)
     .attr("class", "bubble");
 
-if (jsonFile == true){
+
     d3.json("aaa.json", function(error, root) {
         if (error) throw error;
 
@@ -58,7 +53,9 @@ if (jsonFile == true){
               .style("text-anchor", "middle")
               .text(function(d) { return d.className.substring(0, d.r / 3) + d.value; });
     });
-}
+});
+
+
 
 
 
