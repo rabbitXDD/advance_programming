@@ -11,59 +11,58 @@ text {
 
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
+var diameter = 960,
+format = d3.format(",d"),
+color = d3.scale.category20();
 
+var bubble = d3.layout.pack()
+    .sort(null)
+    .size([diameter, diameter])
+    .padding(1.5);
 
+var svg = d3.select("body").append("svg")
+    .attr("width", diameter)
+    .attr("height", diameter)
+    .attr("class", "bubble");
 
-    var diameter = 960,
-    format = d3.format(",d"),
-    color = d3.scale.category20();
+d3.json("aaa.json", function(error, root) {
+    if (error) throw error;
 
-    var bubble = d3.layout.pack()
-        .sort(null)
-        .size([diameter, diameter])
-        .padding(1.5);
+    var node = svg.selectAll(".node")
+      .data(bubble.nodes(classes(root))
+      .filter(function(d) { return !d.children; }))
+      .enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
-    var svg = d3.select("body").append("svg")
-        .attr("width", diameter)
-        .attr("height", diameter)
-        .attr("class", "bubble");
+  node.append("title")
+      .text(function(d) { return d.className + ": " + format(d.value); });
 
-    d3.json("aaa.json", function(error, root) {
-        if (error) throw error;
+  node.append("circle")
+      .attr("r", function(d) { return d.r; })
+      .style("fill", function(d) { return color(d.range); });
 
-        var node = svg.selectAll(".node")
-          .data(bubble.nodes(classes(root))
-          .filter(function(d) { return !d.children; }))
-          .enter().append("g")
-          .attr("class", "node")
-          .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+  node.append("text")
+      .attr("dy", ".3em")
+      .style("text-anchor", "middle")
+      .text(function(d) { return d.className.substring(0, d.r / 3) + d.value; });
+});
 
-      node.append("title")
-          .text(function(d) { return d.className + ": " + format(d.value); });
+// Returns a flattened hierarchy containing all leaf nodes under the root.
+function classes(root) {
+  var classes = [];
 
-      node.append("circle")
-          .attr("r", function(d) { return d.r; })
-          .style("fill", function(d) { return color(d.range); });
+  function recurse(name, node) {
+    var range = Math.round(node.size / 100)
+    if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+    else classes.push({packageName: name, className: node.name, value: node.size, range: range});
+  }
 
-      node.append("text")
-          .attr("dy", ".3em")
-          .style("text-anchor", "middle")
-          .text(function(d) { return d.className.substring(0, d.r / 3) + d.value; });
-    });
-    // Returns a flattened hierarchy containing all leaf nodes under the root.
-    function classes(root) {
-      var classes = [];
+  recurse(null, root);
+  return {children: classes};
+}
 
-      function recurse(name, node) {
-        var range = Math.round(node.size / 100)
-        if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
-        else classes.push({packageName: name, className: node.name, value: node.size, range: range});
-      }
-
-      recurse(null, root);
-      return {children: classes};
-    }
-    d3.select(self.frameElement).style("height", diameter + "px");
+d3.select(self.frameElement).style("height", diameter + "px");
 
 
 </script>
