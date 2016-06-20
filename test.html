@@ -80,7 +80,7 @@ document.getElementById("sex").addEventListener("click", function(){
         .size([diameter, diameter])
         .padding(1.5);
 
-    var svg = d3.select("body").append("svg")
+    var svg = d3.select("body").select("svg")
         .attr("width", diameter)
         .attr("height", diameter)
         .attr("class", "bubble");
