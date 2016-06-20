@@ -17,9 +17,9 @@ text {
 
 document.getElementById("gossiping").addEventListener("click", function(){
 
-    $( document ).ready(function() {
-        $("#svg").empty();
-    });
+
+    $("#svg").empty();
+
     var diameter = 960,
     format = d3.format(",d"),
     color = d3.scale.category20();
@@ -75,6 +75,7 @@ document.getElementById("gossiping").addEventListener("click", function(){
 
 document.getElementById("sex").addEventListener("click", function(){
 
+    $("#svg").empty();
     var diameter = 960,
     format = d3.format(",d"),
     color = d3.scale.category20();
